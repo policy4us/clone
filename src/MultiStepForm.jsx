@@ -88,7 +88,7 @@ const MultiStepForm = () => {
   Male</label>
 </div>
 <div>
-  <label>
+  <label className='d-flex flex-column justify-content-center align-items-center'>
     <input
       type="radio"
       name="gender"
@@ -116,22 +116,17 @@ const MultiStepForm = () => {
         <h3>Selected gender: {gender}</h3>
         <div className='second-gender'>
         <div>
-  <label>
-    <input
-      type="radio"
-      name="gender"
-      value="male"
-      checked={gender === 'male'}
-      onChange={handleGenderChange}
-      style={{ display: 'none' }} // Hide the default radio button
-    />
-    <img
-      src="path_to_male_image.jpg" // Replace with the path to your male image
-      alt="Male"
-      className={gender === 'male' ? 'selected' : ''} // Add a class to indicate the selected image
-    />
-  </label>
-</div>
+              <label>
+                <input
+                  type="radio"
+                  name="genderChange"
+                  value="male"
+                  checked={gender === 'male'}
+                  onChange={handleGenderChange}
+                />
+                Male
+              </label>
+            </div>
             <div>
               <label>
                 <input
@@ -148,17 +143,21 @@ const MultiStepForm = () => {
       </div>
       {gender === 'male' && (
         <>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="you"
-                checked={selectedOptions.includes('you')}
-                onChange={handleCheckboxChange}
-              />
-              You
-            </label>
-          </div>
+          <div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox"
+    value="you"
+    checked={selectedOptions.includes('you')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={maleicon} alt="You" className="checkbox-image" />
+    You
+  </label>
+</div>
+
           <div>
             <label>
               <input

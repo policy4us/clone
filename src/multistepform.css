@@ -44,3 +44,29 @@ label {
     display: flex;
 
 }
+/* new try */
+.checkbox {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .checkbox-input {
+    display: none;
+  }
+  
+  .checkbox-label {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .checkbox-image {
+    width: 80px; /* Adjust the size as needed */
+    height: 80px;
+    margin-right: 5px;
+    border: 1px solid #ccc; /* Add styling for the image container */
+  }
+  
+  .checkbox-input:checked + .checkbox-label .checkbox-image {
+    border-color: #000; /* Add styling for the selected image */
+  }
+  
