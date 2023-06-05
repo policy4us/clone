@@ -158,39 +158,76 @@ const MultiStepForm = () => {
   </label>
 </div>
 
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="wife"
-                checked={selectedOptions.includes('wife')}
-                onChange={handleCheckboxChange}
-              />
-              Wife
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="son"
-                checked={selectedOptions.includes('son')}
-                onChange={handleCheckboxChange}
-              />
-              Son
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="daughter"
-                checked={selectedOptions.includes('daughter')}
-                onChange={handleCheckboxChange}
-              />
-              Daughter
-            </label>
-          </div>
+<div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox1"
+    value="wife"
+    checked={selectedOptions.includes('wife')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox1" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={femaleicon} alt="wife" className="checkbox-image" />
+    Wife
+  </label>
+</div>
+<div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox2"
+    value="son"
+    checked={selectedOptions.includes('son')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox2" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={sonicon} alt="Son" className="checkbox-image" />
+    Son
+  </label>
+</div>
+<div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox3"
+    value="daughter"
+    checked={selectedOptions.includes('daughter')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox3" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={daughtericon} alt="You" className="checkbox-image" />
+    Daughter
+  </label>
+</div>
+<div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox4"
+    value="father"
+    checked={selectedOptions.includes('father')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox4" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={fathericon} alt="You" className="checkbox-image" />
+    Father
+  </label>
+</div>
+<div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox5"
+    value="mother"
+    checked={selectedOptions.includes('mother')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox5" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={mothericon} alt="Mother" className="checkbox-image" />
+    Mother
+  </label>
+</div>
         </>
       )}
       {gender === 'female' && (
