@@ -1,0 +1,46 @@
+body{
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.first-icons{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 50px;
+}
+label {
+    cursor: pointer;
+  }
+  
+  img {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px;
+    border: 1px solid #ccc; /* Add styling for the image container */
+  }
+  
+  img.selected {
+    border-color: #000; /* Add styling for the selected image */
+  }
+.bttn{
+    background-color: orange;
+    color: white;
+    border-radius: 5%;
+}
+.img-wrap{
+    display: flex;
+    cursor: pointer;
+}
+.flx{
+    width: 400px;
+    height: 400px;
+    /* background-color: rgb(50, 103, 150); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.second-gender{
+    display: flex;
+
+}
