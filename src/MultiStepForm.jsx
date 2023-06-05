@@ -11,6 +11,12 @@ import editicon from './assets/edit-icon.png'
 const MultiStepForm = () => {
   const [step, setStep] = useState(1);
   const [gender, setGender] = useState('');
+  const [you, setYou] = useState('');
+  const [mother, setMother] = useState('');
+  const [father, setFather] = useState('');
+  const [son, setSon] = useState(''); 
+  const [daughter, setDaughter] = useState('');
+  const [spouse, setSpouse] = useState('');
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [age, setAge] = useState('');
   const [sonCount,setSonCount]=useState(1)
@@ -18,9 +24,33 @@ const MultiStepForm = () => {
 
   useEffect(() => {
     const storedGender = localStorage.getItem('gender');
+    const storedYou = localStorage.getItem('you');
+    const storedMother = localStorage.getItem('mother');
+    const storedFather = localStorage.getItem('father');
+    const storedSon = localStorage.getItem('son');
+    const storedDaughter = localStorage.getItem('daughter');
+    const storedSpouse = localStorage.getItem('spouse');
     const storedOptions = localStorage.getItem('selectedOptions');
     if (storedGender) {
       setGender(storedGender);
+    }
+    if (storedYou) {
+      setYou(storedYou);
+    }
+    if (storedMother) {
+      setMother(storedMother);
+    }
+    if (storedFather) {
+      setFather(storedFather);
+    }
+    if (storedSon) {
+      setSon(storedSon);
+    }
+    if (storedDaughter) {
+      setDaughter(storedDaughter);
+    }
+    if (storedSpouse) {
+      setSpouse(storedSpouse);
     }
     if (storedOptions) {
       setSelectedOptions(JSON.parse(storedOptions));
@@ -29,8 +59,14 @@ const MultiStepForm = () => {
 
   useEffect(() => {
     localStorage.setItem('gender', gender);
+    localStorage.setItem('you', you);
+    localStorage.setItem('mother', mother);
+    localStorage.setItem('father', father);
+    localStorage.setItem('son', son);
+    localStorage.setItem('daughter', daughter);
+    localStorage.setItem('spouse', spouse);
     localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
-  }, [gender, selectedOptions]);
+  }, [gender,you,mother,father,son,daughter,spouse, selectedOptions]);
 
   const handleGenderChange = (event) => {
     const selectedGender = event.target.value;
