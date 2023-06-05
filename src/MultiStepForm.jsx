@@ -141,8 +141,7 @@ const MultiStepForm = () => {
             </div>
         </div>
       </div>
-      {gender === 'male' && (
-        <>
+     
           <div className="checkbox">
   <input
     type="checkbox"
@@ -158,7 +157,7 @@ const MultiStepForm = () => {
   </label>
 </div>
 
-<div className="checkbox">
+{gender==='male'?<div className="checkbox">
   <input
     type="checkbox"
     id="youCheckbox1"
@@ -171,7 +170,21 @@ const MultiStepForm = () => {
     <img src={femaleicon} alt="wife" className="checkbox-image" />
     Wife
   </label>
+</div>:<div className="checkbox">
+  <input
+    type="checkbox"
+    id="youCheckbox1"
+    value="husband"
+    checked={selectedOptions.includes('husband')}
+    onChange={handleCheckboxChange}
+    className="checkbox-input"
+  />
+  <label htmlFor="youCheckbox1" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
+    <img src={maleicon} alt="husband" className="checkbox-image" />
+    Husband
+  </label>
 </div>
+}
 <div className="checkbox">
   <input
     type="checkbox"
@@ -228,56 +241,8 @@ const MultiStepForm = () => {
     Mother
   </label>
 </div>
-        </>
-      )}
-      {gender === 'female' && (
-        <>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="you"
-                checked={selectedOptions.includes('you')}
-                onChange={handleCheckboxChange}
-              />
-              You
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="husband"
-                checked={selectedOptions.includes('husband')}
-                onChange={handleCheckboxChange}
-              />
-              Husband
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="son"
-                checked={selectedOptions.includes('son')}
-                onChange={handleCheckboxChange}
-              />
-              Son
-            </label>
-          </div>
-          <div>
-            <label>
-              <input
-                type="checkbox"
-                value="daughter"
-                checked={selectedOptions.includes('daughter')}
-                onChange={handleCheckboxChange}
-              />
-              Daughter
-            </label>
-          </div>
-        </>
-      )}
+       
+     
       <button onClick={handlePrevious}>Previous</button>
       <button onClick={handleNext}>Next Step</button>
     </>
