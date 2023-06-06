@@ -37,12 +37,15 @@ const MultiStepForm = () => {
     }
     if (storedYou) {
       setYou(storedYou);
+      setSelectedMembers((prevMemers)=>[...prevMemers, {relation:'self',age:'',gender:'male'}])
     }
     if (storedMother) {
       setMother(storedMother);
+      setSelectedMembers((prevMemberrs)=>[...prevMemberrs,{relation:storedMother,age:'',gender:'female'}])
     }
     if (storedFather) {
       setFather(storedFather);
+      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedFather,age:'',gender:'male'}])
     }
     if (storedSon) {
       setSon(storedSon);
@@ -52,6 +55,7 @@ const MultiStepForm = () => {
     }
     if (storedSpouse) {
       setSpouse(storedSpouse);
+      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedSpouse,age:'',gender:'female'}])
     }
     // if (storedOptions) {
     //   setSelectedOptions(JSON.parse(storedOptions));
@@ -93,9 +97,9 @@ const MultiStepForm = () => {
           // setSelectedMembers([...selectedMembers, value]);
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:'self',age:'',gender:gender}]);
         } else {
-          // setSelectedMembers((prevMembers)=>
-          // prevMembers.filter((member) => member.relation!== value)
-          // )
+          setSelectedMembers((prevMembers)=>
+          prevMembers.filter((member) => member.relation!== 'self')
+          )
           setYou('');
         }
   }
@@ -110,9 +114,9 @@ const MultiStepForm = () => {
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value, age:'',gender:'female'}]);
         } else {
           setMother('');
-          // setSelectedMembers((prevMembers)=>
-          //           prevMembers.filter((member) => member.relation!== value)
-          //           )
+          setSelectedMembers((prevMembers)=>
+                    prevMembers.filter((member) => member.relation!== value)
+                    )
         }
   }
   const fatherCheckBoxChange =(event) => {
@@ -123,6 +127,7 @@ const MultiStepForm = () => {
           // setSelectedMembers([...selectedMembers, value]);
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value,age:'',gender:'male'}])
         } else {
+          setSelectedMembers((prevMembers)=>prevMembers.filter((member)=>member.relation!== value))
           setFather('');
         }
   }
@@ -152,6 +157,7 @@ const MultiStepForm = () => {
           // setSelectedMembers([...selectedMembers, value]);
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value,age:'',gender:'male'}])
         } else {
+          setSelectedMembers((prevMembers)=>prevMembers.filter((member)=>member.relation!==value))
           setSpouse('');
         }
   }
