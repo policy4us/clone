@@ -138,9 +138,7 @@ const MultiStepForm = () => {
           setSpouse('');
         }
   }
-  // const childSelection=()=>{
-  //   if()
-  // }
+ 
   const sonCountDecrease = () => { sonCount>0&& setSonCount(preCount=>preCount-1)};
   const sonCountIncrease = () => {(sonCount+daughterCount)<4 && setSonCount(preCount=>preCount+1)};
   const daughterCountDecrease = () => {daughterCount>0&& setDaughterCount(preCount=>preCount-1)};
@@ -292,6 +290,7 @@ const MultiStepForm = () => {
             id="youCheckbox2"
             value="son"
             checked={son==='son'}
+            // disabled={childSelection}
             onChange={sonCheckBoxChange}
             className="checkbox-input"
           />
