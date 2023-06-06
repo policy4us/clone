@@ -84,6 +84,60 @@ const MultiStepForm = () => {
       setSelectedOptions(selectedOptions.filter((option) => option !== value));
     }
   };
+  const youCheckBoxChange =(event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+          setYou(value);
+        } else {
+          setYou('');
+        }
+  }
+  const motherCheckBoxChange =(event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+          setMother(value);
+        } else {
+          setMother('');
+        }
+  }
+  const fatherCheckBoxChange =(event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+          setFather(value);
+        } else {
+          setFather('');
+        }
+  }
+  const sonCheckBoxChange =(event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+          setSon(value);
+        } else {
+          setSon('');
+        }
+  }
+  const daughterCheckBoxChange =(event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+          setDaughter(value);
+        } else {
+          setDaughter('');
+        }
+  }
+  const spouseCheckBoxChange =(event) => {
+    const value = event.target.value;
+    const checked = event.target.checked;
+    if (checked) {
+          setSpouse(value);
+        } else {
+          setSpouse('');
+        }
+  }
   const sonCountDecrease = () => { sonCount>0&& setSonCount(preCount=>preCount-1)};
   const sonCountIncrease = () => {(sonCount+daughterCount)<4 && setSonCount(preCount=>preCount+1)};
   const daughterCountDecrease = () => {daughterCount>0&& setDaughterCount(preCount=>preCount-1)};
@@ -191,8 +245,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox"
             value="you"
-            checked={selectedOptions.includes('you')}
-            onChange={handleCheckboxChange}
+            checked={you==='you'}
+            onChange={youCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
@@ -206,8 +260,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox1"
             value="spouse"
-            checked={selectedOptions.includes('spouse')}
-            onChange={handleCheckboxChange}
+            checked={spouse==='spouse'}
+            onChange={spouseCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox1" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
@@ -219,8 +273,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox1"
             value="spouse"
-            checked={selectedOptions.includes('spouse')}
-            onChange={handleCheckboxChange}
+            checked={spouse==='spouse'}
+            onChange={spouseCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox1" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
@@ -234,8 +288,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox2"
             value="son"
-            checked={selectedOptions.includes('son')}
-            onChange={handleCheckboxChange}
+            checked={son==='son'}
+            onChange={sonCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox2" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
@@ -243,7 +297,7 @@ const MultiStepForm = () => {
             Son
           </label>
           <div className='special'>
-          {selectedOptions.includes("son") && <div className='d-flex align-items-center justify-content-center'>
+          {son && <div className='d-flex align-items-center justify-content-center'>
             <div className='btn' onClick={sonCountDecrease}>-</div>
             <div>{sonCount}</div>
             <div className='btn' onClick={sonCountIncrease}>+</div></div>}
@@ -256,8 +310,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox3"
             value="daughter"
-            checked={selectedOptions.includes('daughter')}
-            onChange={handleCheckboxChange}
+            checked={daughter==='daughter'}
+            onChange={daughterCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox3" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
@@ -265,7 +319,7 @@ const MultiStepForm = () => {
             Daughter
           </label>
           <div className='special'>
-          {selectedOptions.includes("daughter") && <div className='d-flex align-items-center justify-content-center'>
+          {daughter && <div className='d-flex align-items-center justify-content-center'>
             <div className='btn' onClick={daughterCountDecrease}>-</div>
             <div>{daughterCount}</div>
             <div className='btn' onClick={daughterCountIncrease} >+</div></div>}
@@ -276,8 +330,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox4"
             value="father"
-            checked={selectedOptions.includes('father')}
-            onChange={handleCheckboxChange}
+            checked={father==='father'}
+            onChange={fatherCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox4" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
@@ -290,8 +344,8 @@ const MultiStepForm = () => {
             type="checkbox"
             id="youCheckbox5"
             value="mother"
-            checked={selectedOptions.includes('mother')}
-            onChange={handleCheckboxChange}
+            checked={mother==='mother'}
+            onChange={motherCheckBoxChange}
             className="checkbox-input"
           />
           <label htmlFor="youCheckbox5" className="checkbox-label d-flex flex-column justify-content-center align-items-center">
