@@ -17,7 +17,7 @@ const MultiStepForm = () => {
   const [son, setSon] = useState(''); 
   const [daughter, setDaughter] = useState('');
   const [spouse, setSpouse] = useState('');
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  // const [selectedOptions, setSelectedOptions] = useState([]);
   const [age, setAge] = useState('');
   const [sonCount,setSonCount]=useState(1)
   const [daughterCount, setDaughterCount]=useState(1)
@@ -30,7 +30,7 @@ const MultiStepForm = () => {
     const storedSon = localStorage.getItem('son');
     const storedDaughter = localStorage.getItem('daughter');
     const storedSpouse = localStorage.getItem('spouse');
-    const storedOptions = localStorage.getItem('selectedOptions');
+    // const storedOptions = localStorage.getItem('selectedOptions');
     if (storedGender) {
       setGender(storedGender);
     }
@@ -52,9 +52,9 @@ const MultiStepForm = () => {
     if (storedSpouse) {
       setSpouse(storedSpouse);
     }
-    if (storedOptions) {
-      setSelectedOptions(JSON.parse(storedOptions));
-    }
+    // if (storedOptions) {
+    //   setSelectedOptions(JSON.parse(storedOptions));
+    // }
   }, []);
 
   useEffect(() => {
@@ -65,25 +65,25 @@ const MultiStepForm = () => {
     localStorage.setItem('son', son);
     localStorage.setItem('daughter', daughter);
     localStorage.setItem('spouse', spouse);
-    localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
-  }, [gender,you,mother,father,son,daughter,spouse, selectedOptions]);
+    // localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
+  }, [gender,you,mother,father,son,daughter,spouse /* ,selectedOptions*/]);
 
   const handleGenderChange = (event) => {
     const selectedGender = event.target.value;
     setGender(selectedGender);
-    setSelectedOptions([]);
+    // setSelectedOptions([]);
   };
 
-  const handleCheckboxChange = (event) => {
-    const value = event.target.value;
-    const checked = event.target.checked;
+  // const handleCheckboxChange = (event) => {
+  //   const value = event.target.value;
+  //   const checked = event.target.checked;
 
-    if (checked) {
-      setSelectedOptions([...selectedOptions, value]);
-    } else {
-      setSelectedOptions(selectedOptions.filter((option) => option !== value));
-    }
-  };
+  //   if (checked) {
+  //     setSelectedOptions([...selectedOptions, value]);
+  //   } else {
+  //     setSelectedOptions(selectedOptions.filter((option) => option !== value));
+  //   }
+  // };
   const youCheckBoxChange =(event) => {
     const value = event.target.value;
     const checked = event.target.checked;
