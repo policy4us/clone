@@ -21,6 +21,7 @@ const MultiStepForm = () => {
   const [age, setAge] = useState('');
   const [sonCount,setSonCount]=useState(1)
   const [daughterCount, setDaughterCount]=useState(1)
+  const [selectedMembers,setSelectedMembers]=useState([]);
 
   useEffect(() => {
     const storedGender = localStorage.getItem('gender');
@@ -89,6 +90,7 @@ const MultiStepForm = () => {
     const checked = event.target.checked;
     if (checked) {
           setYou(value);
+          setSelectedMembers([...selectedMembers, value]);
         } else {
           setYou('');
         }
@@ -98,6 +100,7 @@ const MultiStepForm = () => {
     const checked = event.target.checked;
     if (checked) {
           setMother(value);
+          setSelectedMembers([...selectedMembers, value]);
         } else {
           setMother('');
         }
@@ -107,6 +110,7 @@ const MultiStepForm = () => {
     const checked = event.target.checked;
     if (checked) {
           setFather(value);
+          setSelectedMembers([...selectedMembers, value]);
         } else {
           setFather('');
         }
@@ -134,16 +138,40 @@ const MultiStepForm = () => {
     const checked = event.target.checked;
     if (checked) {
           setSpouse(value);
+          setSelectedMembers([...selectedMembers, value]);
         } else {
           setSpouse('');
         }
   }
  
-  const sonCountDecrease = () => { sonCount>0&& setSonCount(preCount=>preCount-1)};
-  const sonCountIncrease = () => {(sonCount+daughterCount)<4 && setSonCount(preCount=>preCount+1)};
-  const daughterCountDecrease = () => {daughterCount>0&& setDaughterCount(preCount=>preCount-1)};
-  const daughterCountIncrease = () => {(sonCount+daughterCount)<4 && setDaughterCount(preCount=>preCount+1)};
-
+  // const sonCountDecrease = () => { sonCount>0&& setSonCount(preCount=>preCount-1)};
+  const sonCountDecrease = () => {
+    if (sonCount > 0) {
+      setSonCount((preCount) => preCount - 1);
+      setSelectedMembers(selectedMembers.filter((option) => option !== son));
+    }
+  };
+  
+  const sonCountIncrease = () => {
+    (sonCount + daughterCount) < 4 && (
+      setSonCount((preCount) => preCount + 1),
+      setSelectedMembers([...selectedMembers, son])
+    );
+  };  
+  // const daughterCountDecrease = () => {daughterCount>0&& setDaughterCount(preCount=>preCount-1)};
+  const daughterCountDecrease = () => {
+    if (daughterCount > 0) {
+      setDaughterCount((preCount) => preCount - 1);
+      setSelectedMembers(selectedMembers.filter((option) => option !== daughter));
+    }
+  };
+  const daughterCountIncrease = () => {
+    (sonCount + daughterCount) < 4 && (
+      setDaughterCount((preCount) => preCount + 1),
+      setSelectedMembers([...selectedMembers, daughter])
+    );
+  };
+  
   const handleAgeChange = (event) => {
     setAge(event.target.value);
   };
