@@ -136,6 +136,8 @@ const MultiStepForm = () => {
     const checked = event.target.checked;
     if (checked) {
           setSon(value);
+          setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son', age: '', gender: 'male' }]);
+
         } else {
           setSon('');
         }
@@ -145,6 +147,7 @@ const MultiStepForm = () => {
     const checked = event.target.checked;
     if (checked) {
           setDaughter(value);
+          setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter', age: '', gender: 'female' }]);
         } else {
           setDaughter('');
         }
@@ -174,12 +177,14 @@ const MultiStepForm = () => {
   };
   
   const sonCountIncrease = () => {
-    (sonCount + daughterCount) < 4 && (
-      setSonCount((preCount) => preCount + 1),
-      // setSelectedMembers([...selectedMembers, son])
-      setSelectedMembers((prevMemberrs)=>[...prevMemberrs, {relation:'son'+sonCount, age:'',gender:'male'}])
-    );
-  };  
+    if ((sonCount + daughterCount) < 4) {
+      setSonCount((preCount) => preCount + 1);
+      // setSelectedMembers([...selectedMembers, son]);
+      console.log('sonCount increase');
+      setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son', age: '', gender: 'male' }]);
+    }
+  };
+  
   // const daughterCountDecrease = () => {daughterCount>0&& setDaughterCount(preCount=>preCount-1)};
   const daughterCountDecrease = () => {
     if (daughterCount > 0) {
@@ -191,11 +196,11 @@ const MultiStepForm = () => {
     }
   };
   const daughterCountIncrease = () => {
-    (sonCount + daughterCount) < 4 && (
-      setDaughterCount((preCount) => preCount + 1),
-      // setSelectedMembers([...selectedMembers, daughter])
-      setSelectedMembers((prevMemberrs)=>[...prevMemberrs, {relation:'daughter'+daughterCount, age:'',gender:'female'}])
-    );
+    if ((sonCount + daughterCount) < 4) {
+      setDaughterCount((preCount) => preCount + 1);
+      // setSelectedMembers([...selectedMembers, daughter]);
+      setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter', age: '', gender: 'female' }]);
+    }
   };
   
   const handleAgeChange = (event) => {
