@@ -49,9 +49,12 @@ const MultiStepForm = () => {
     }
     if (storedSon) {
       setSon(storedSon);
+      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedSon,age:'',gender:'male'}])
+
     }
     if (storedDaughter) {
       setDaughter(storedDaughter);
+      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedDaughter,age:'',gender:'female'}])
     }
     if (storedSpouse) {
       setSpouse(storedSpouse);
@@ -126,6 +129,7 @@ const MultiStepForm = () => {
           setFather(value);
           // setSelectedMembers([...selectedMembers, value]);
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value,age:'',gender:'male'}])
+          console.log('father selected')
         } else {
           setSelectedMembers((prevMembers)=>prevMembers.filter((member)=>member.relation!== value))
           setFather('');
@@ -137,9 +141,14 @@ const MultiStepForm = () => {
     if (checked) {
           setSon(value);
           setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son', age: '', gender: 'male' }]);
+          console.log('son')
 
         } else {
           setSon('');
+          setSelectedMembers((prevMembers) =>
+          prevMembers.filter((member) => member.relation!== value)
+        );
+          setSonCount(1)
         }
   }
   const daughterCheckBoxChange =(event) => {
@@ -148,8 +157,13 @@ const MultiStepForm = () => {
     if (checked) {
           setDaughter(value);
           setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter', age: '', gender: 'female' }]);
+          console.log('daughter')
         } else {
           setDaughter('');
+          setSelectedMembers((prevMembers) =>
+          prevMembers.filter((member) => member.relation!== value)
+        );
+        setDaughterCount(1)
         }
   }
   const spouseCheckBoxChange =(event) => {
@@ -170,9 +184,16 @@ const MultiStepForm = () => {
     if (sonCount > 0) {
       setSonCount((preCount) => preCount - 1);
       // setSelectedMembers(selectedMembers.filter((option) => option !== son));
-      setSelectedMembers((prevMembers) =>
-              prevMembers.filter((member) => member.relation!== son+sonCount)
-            );
+      setSelectedMembers((prevMembers) => {
+        const index = prevMembers.findIndex((member) => member.relation === 'son');
+        if (index !== -1) {
+          const updatedMembers = [...prevMembers];
+          updatedMembers.splice(index, 1);
+          return updatedMembers;
+        }
+        return prevMembers;
+      });
+      
     }
   };
   
@@ -190,9 +211,16 @@ const MultiStepForm = () => {
     if (daughterCount > 0) {
       setDaughterCount((preCount) => preCount - 1);
       // setSelectedMembers(selectedMembers.filter((option) => option !== daughter));
-      setSelectedMembers((prevMembers) =>
-                    prevMembers.filter((member) => member.relation!== daughter+daughterCount)
-                  );
+      setSelectedMembers((prevMembers) => {
+        const index = prevMembers.findIndex((member) => member.relation === 'daughter');
+        if (index !== -1) {
+          const updatedMembers = [...prevMembers];
+          updatedMembers.splice(index, 1);
+          return updatedMembers;
+        }
+        return prevMembers;
+      });
+      
     }
   };
   const daughterCountIncrease = () => {
