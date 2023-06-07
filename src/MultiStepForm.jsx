@@ -15,10 +15,28 @@ const MultiStepForm = () => {
   const [mother, setMother] = useState('');
   const [father, setFather] = useState('');
   const [son, setSon] = useState(''); 
+  const [son1,setSon1]=useState('')
+  const [son2,setSon2]=useState('')
+  const [son3,setSon3]=useState('')
   const [daughter, setDaughter] = useState('');
+  const [daughter1,setDaughter1]=useState('')
+  const [daughter2,setDaughter2]=useState('')
+  const [daughter3,setDaughter3]=useState('')
   const [spouse, setSpouse] = useState('');
   // const [selectedOptions, setSelectedOptions] = useState([]);
-  const [age, setAge] = useState('');
+const [motherAge,setMotherAge] = useState('');
+  const [fatherAge,setFatherAge] = useState('');
+  const [sonAge,setSonAge] = useState('');
+  const [daughterAge,setDaughterAge] = useState('');
+  const [spouseAge,setSpouseAge] = useState('');
+  const [youAge,setYouage] = useState('');
+  const [son1Age,setSon1Age] = useState('');
+  const [son2Age,setSon2Age] = useState('');
+  const [son3Age,setSon3Age] = useState('');
+  const [daughter1Age,setDaughter1Age]=useState('')
+  const [daughter2Age,setDaughter2Age]=useState('')
+  const [daughter3Age,setDaughter3Age]=useState('')
+  // const [age, setAge] = useState('');
   const [sonCount,setSonCount]=useState(1)
   const [daughterCount, setDaughterCount]=useState(1)
   const [selectedMembers,setSelectedMembers]=useState([{relation:'',age:'',gender:''}]);
@@ -29,8 +47,26 @@ const MultiStepForm = () => {
     const storedMother = localStorage.getItem('mother');
     const storedFather = localStorage.getItem('father');
     const storedSon = localStorage.getItem('son');
+    const storedSon1 = localStorage.getItem('son1');
+    const storedSon2 = localStorage.getItem('son2');
+    const storedSon3 = localStorage.getItem('son3');
     const storedDaughter = localStorage.getItem('daughter');
+    const storedDaughter1 = localStorage.getItem('daughter1');
+    const storedDaughter2 = localStorage.getItem('daughter2');
+    const storedDaughter3 = localStorage.getItem('daughter3');
     const storedSpouse = localStorage.getItem('spouse');
+    const storedMotherAge = localStorage.getItem('motherAge');
+    const storedFatherAge = localStorage.getItem('fatherAge');
+    const storedSonAge = localStorage.getItem('sonAge');
+    const storedDaughterAge = localStorage.getItem('daughterAge');
+    const storedSpouseAge = localStorage.getItem('spouseAge');
+    const storedYouAge = localStorage.getItem('youAge');
+    const storedSon1Age = localStorage.getItem('son1Age');
+    const storedSon2Age = localStorage.getItem('son2Age');
+    const storedSon3Age = localStorage.getItem('son3Age');
+    const storedDaughter1Age = localStorage.getItem('daughter1Age');
+    const storedDaughter2Age = localStorage.getItem('daughter2Age');  
+    const storedDaughter3Age = localStorage.getItem('daughter3Age');
     // const storedOptions = localStorage.getItem('selectedOptions');
     if (storedGender) {
       setGender(storedGender);
@@ -50,16 +86,75 @@ const MultiStepForm = () => {
     if (storedSon) {
       setSon(storedSon);
       setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedSon,age:'',gender:'male'}])
-
     }
+     if (storedSon1) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon1,age:'',gender:'male'}])
+     }
+     if (storedSon2) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon2,age:'',gender:'male'}])
+     }
+     if (storedSon3) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon3,age:'',gender:'male'}])
+     }
     if (storedDaughter) {
       setDaughter(storedDaughter);
       setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedDaughter,age:'',gender:'female'}])
+    }
+    if (storedDaughter1) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedDaughter1,age:'',gender:'female'}])
+    }
+    if (storedDaughter2) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedDaughter2,age:'',gender:'female'}])
+    }
+    if (storedDaughter3) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedDaughter3,age:'',gender:'female'}])
     }
     if (storedSpouse) {
       setSpouse(storedSpouse);
       setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedSpouse,age:'',gender:'female'}])
     }
+    if (storedMotherAge) {
+       setMotherAge(storedMotherAge);
+   }
+   if (storedFatherAge) {
+         setFatherAge(storedFatherAge);
+   }
+   if (storedSpouseAge) {
+    setSpouseAge(storedSpouseAge);
+   }
+   if (storedSonAge) {
+    setSonAge(storedSonAge);
+   }
+   if (storedDaughterAge) {
+    setDaughterAge(storedDaughterAge);
+   }
+   if (storedYouAge) {
+    setYouage(storedYouAge);
+   }
+   if (storedSon1Age) {
+    setSon1Age(storedSon1Age);
+   }
+   if (storedSon2Age) {
+    setSon2Age(storedSon2Age);
+   }
+    if (storedSon3Age) {
+    setSon3Age(storedSon3Age);
+   }
+   if (storedDaughter1Age) {
+    setDaughter1Age(storedDaughter1Age);
+   }
+   if (storedDaughter2Age) {
+    setDaughter2Age(storedDaughter2Age);
+   }
+   if (storedDaughter3Age) {
+    setDaughter3Age(storedDaughter3Age);
+   }
+
+
+
+
+
+
     // if (storedOptions) {
     //   setSelectedOptions(JSON.parse(storedOptions));
     // }
@@ -71,10 +166,28 @@ const MultiStepForm = () => {
     localStorage.setItem('mother', mother);
     localStorage.setItem('father', father);
     localStorage.setItem('son', son);
+    localStorage.setItem('son1', son1);
+    localStorage.setItem('son2', son2);
+    localStorage.setItem('son3', son3);
     localStorage.setItem('daughter', daughter);
+    localStorage.setItem('daughter1', daughter1);
+    localStorage.setItem('daughter2', daughter2);
+    localStorage.setItem('daughter3', daughter3);
     localStorage.setItem('spouse', spouse);
+    localStorage.setItem('motherAge', motherAge);
+    localStorage.setItem('fatherAge', fatherAge);
+    localStorage.setItem('sonAge', sonAge);
+    localStorage.setItem('daughterAge', daughterAge);
+    localStorage.setItem('spouseAge', spouseAge);
+    localStorage.setItem('youAge', youAge);
+    localStorage.setItem('son1Age', son1Age);
+    localStorage.setItem('son2Age', son2Age);
+    localStorage.setItem('son3Age', son3Age);
+    localStorage.setItem('daughter1Age', daughter1Age);
+    localStorage.setItem('daughter2Age', daughter2Age);
+    localStorage.setItem('daughter3Age', daughter3Age);
     // localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
-  }, [gender,you,mother,father,son,daughter,spouse /* ,selectedOptions*/]);
+  }, [gender,you,mother,father,son,son1,son2,son3,daughter,daughter1,daughter2,daughter3,spouse,motherAge,fatherAge,sonAge,daughterAge,spouseAge,youAge,son1Age,son2Age,son3Age,daughter1Age,daughter2Age,daughter3Age /* ,selectedOptions*/]);
 
   const handleGenderChange = (event) => {
     const selectedGender = event.target.value;
@@ -184,15 +297,21 @@ const MultiStepForm = () => {
     if (sonCount > 0) {
       setSonCount((preCount) => preCount - 1);
       // setSelectedMembers(selectedMembers.filter((option) => option !== son));
+      // setSelectedMembers((prevMembers) => {
+      //   const index = prevMembers.findIndex((member) => member.relation === 'son');
+      //   if (index !== -1) {
+      //     const updatedMembers = [...prevMembers];
+      //     updatedMembers.splice(index, 1);
+      //     return updatedMembers;
+      //   }
+      //   return prevMembers;
+      // });
       setSelectedMembers((prevMembers) => {
-        const index = prevMembers.findIndex((member) => member.relation === 'son');
-        if (index !== -1) {
-          const updatedMembers = [...prevMembers];
-          updatedMembers.splice(index, 1);
-          return updatedMembers;
-        }
-        return prevMembers;
+        // Create a new array excluding the last item
+        const updatedMembers = prevMembers.slice(0, -1);
+        return updatedMembers;
       });
+      
       
     }
   };
@@ -202,7 +321,14 @@ const MultiStepForm = () => {
       setSonCount((preCount) => preCount + 1);
       // setSelectedMembers([...selectedMembers, son]);
       console.log('sonCount increase');
-      setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son', age: '', gender: 'male' }]);
+      switch (sonCount) {
+         case 1: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son1', age: '', gender: 'male' }]);
+         break;
+         case 2: setSelectedMembers((prevMembers) => [...prevMembers, { relation:'son2', age: '', gender: 'male' }]);
+         break;
+         case 3: setSelectedMembers((prevMembers) => [...prevMembers, { relation:'son3', age: '', gender: 'male' }]);
+         break;
+      }
     }
   };
   
@@ -211,15 +337,24 @@ const MultiStepForm = () => {
     if (daughterCount > 0) {
       setDaughterCount((preCount) => preCount - 1);
       // setSelectedMembers(selectedMembers.filter((option) => option !== daughter));
+      // setSelectedMembers((prevMembers) => {
+      //   const index = prevMembers.findIndex((member) => member.relation === 'daughter');
+      //   if (index !== -1) {
+      //     const updatedMembers = [...prevMembers];
+      //     updatedMembers.splice(index, 1);
+      //     return updatedMembers;
+      //   }
+      //   return prevMembers;
       setSelectedMembers((prevMembers) => {
-        const index = prevMembers.findIndex((member) => member.relation === 'daughter');
-        if (index !== -1) {
-          const updatedMembers = [...prevMembers];
-          updatedMembers.splice(index, 1);
-          return updatedMembers;
-        }
-        return prevMembers;
+        // Create a new array excluding the last item
+        const updatedMembers = prevMembers.slice(0, -1);
+        return updatedMembers;
       });
+      
+      // });
+      switch(daughterCount) {
+        case 2: selectedMembers.filter((option) => option.relation !=='son1')
+      }
       
     }
   };
@@ -227,7 +362,14 @@ const MultiStepForm = () => {
     if ((sonCount + daughterCount) < 4) {
       setDaughterCount((preCount) => preCount + 1);
       // setSelectedMembers([...selectedMembers, daughter]);
-      setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter', age: '', gender: 'female' }]);
+     switch(daughterCount) {
+      case 1: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter1', age: '', gender: 'female' }]);
+      break;
+      case 2: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter2', age: '', gender: 'female' }]);
+      break;
+      case 3: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter3', age: '', gender: 'female' }]);
+      break;
+     }
     }
   };
   //orkkanam may be mattendivarum
@@ -236,6 +378,7 @@ const MultiStepForm = () => {
   // };
 
   const handlePrevious = () => {
+
     setStep(step - 1);
   };
 
@@ -456,11 +599,14 @@ const MultiStepForm = () => {
     mother: { min: 18, max: 100 },
     son: { min: 0, max: 30 },
     daughter: { min: 0, max: 30 },
+    daughter1:{ min: 0, max: 30 },
+    daughter2:{ min: 0, max: 30 },
+    daughter3:{ min: 0, max: 30 },
     spouse: { min: 18, max: 100 },
     you: { min: 18, max: 100 },
   };
   const formatAge = (relation, age) => {
-    if (relation === 'son' || relation === 'daughter') {
+    if (relation === 'son' || relation === 'daughter'|| relation === 'daughter1') {
       if (age < 1) {
         const months = Math.round(age * 12);
         return `${months} months`;
@@ -491,7 +637,7 @@ const MultiStepForm = () => {
     const ageLimits = ageRange[relation];
     const options = [];
 
-    if (relation === 'son' || relation === 'daughter') {
+    if (relation === 'son' || relation === 'daughter' || relation === 'daughter1') {
       for (let i = 0; i <= 11; i++) {
         options.push(
           <option key={i} value={i / 12}>
