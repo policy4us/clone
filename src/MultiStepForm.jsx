@@ -459,7 +459,7 @@ const MultiStepForm = () => {
         <p key={index}>{item.relation}</p>
       ))}
     </div>
-      <h2>Step 3: Enter Age</h2>
+      <h2>Tell us ages of your family membersee</h2>
       <div>
         <label>
           Age:
