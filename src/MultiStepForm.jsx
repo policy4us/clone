@@ -230,10 +230,10 @@ const MultiStepForm = () => {
       setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter', age: '', gender: 'female' }]);
     }
   };
-  
-  const handleAgeChange = (event) => {
-    setAge(event.target.value);
-  };
+  //orkkanam may be mattendivarum
+  // const handleAgeChange = (event) => {
+  //   setAge(event.target.value);
+  // };
 
   const handlePrevious = () => {
     setStep(step - 1);
@@ -450,24 +450,96 @@ const MultiStepForm = () => {
      </div>
     </div>
   );
+  //starting
+  const ageRange = {
+    father: { min: 18, max: 100 },
+    mother: { min: 18, max: 100 },
+    son: { min: 0, max: 30 },
+    daughter: { min: 0, max: 30 },
+    spouse: { min: 18, max: 100 },
+    you: { min: 18, max: 100 },
+  };
+  const formatAge = (relation, age) => {
+    if (relation === 'son' || relation === 'daughter') {
+      if (age < 1) {
+        const months = Math.round(age * 12);
+        return `${months} months`;
+      } else {
+        return `${Math.floor(age)} years`;
+      }
+    } else {
+      return `${Math.floor(age)} years`;
+    }
+  };
+
+  const handleAgeChange = (index, event) => {
+    const { value } = event.target;
+    const member = selectedMembers[index];
+    const ageLimits = ageRange[member.relation];
+    const newAge = parseFloat(value);
+
+    if (ageLimits && newAge >= ageLimits.min && newAge <= ageLimits.max) {
+      setSelectedMembers((prevMembers) => {
+        const updatedMembers = [...prevMembers];
+        updatedMembers[index] = { ...member, age: newAge };
+        return updatedMembers;
+      });
+    }
+  };
+
+  const renderAgeOptions = (relation) => {
+    const ageLimits = ageRange[relation];
+    const options = [];
+
+    if (relation === 'son' || relation === 'daughter') {
+      for (let i = 0; i <= 11; i++) {
+        options.push(
+          <option key={i} value={i / 12}>
+            {i} months
+          </option>
+        );
+      }
+    }
+
+    if (ageLimits) {
+      for (let i = ageLimits.min; i <= ageLimits.max; i++) {
+        options.push(
+          <option key={i} value={i}>
+            {i} years
+          </option>
+        );
+      }
+    }
+
+    return options;
+  };
+  
+
+
+
 
   const renderStep3 = () => (
     <>
-    
-    <div>
-      {selectedMembers.map((item, index) => (
-        <p key={index}>{item.relation}</p>
+<div>
+      {selectedMembers.map((member, index) => (
+        <div key={index}>
+          {member.relation && (
+            <>
+              <span>{member.relation}</span>
+              <select value={member.age} onChange={(e) => handleAgeChange(index, e)}>
+                <option value="">Select Age</option>
+                {renderAgeOptions(member.relation)}
+              </select>
+              <span>Age: {formatAge(member.relation, member.age)}</span>
+            </>
+          )}
+        </div>
       ))}
     </div>
-      <h2>Tell us ages of your family membersee</h2>
-      <div>
-        <label>
-          Age:
-          <input type="text" value={age} onChange={handleAgeChange} />
-        </label>
-      </div>
-      <button onClick={handlePrevious}>Previous</button>
-      <button type="submit">Submit</button>
+    <div>
+          <button onClick={handlePrevious}>Previous</button>
+          <button onClick={handleNext}>Next Step</button>
+     </div>
     </>
   );
 
