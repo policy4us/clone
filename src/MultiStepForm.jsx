@@ -236,6 +236,7 @@ const [motherAge,setMotherAge] = useState('');
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value,age:'',gender:'male'}])
           console.log('father selected')
         } else {
+          console.log('father not selected')
           setSelectedMembers((prevMembers)=>prevMembers.filter((member)=>member.relation!== value))
           setFather('');
         }
@@ -280,6 +281,8 @@ const [motherAge,setMotherAge] = useState('');
     const checked = event.target.checked;
     if (checked) {
           setSpouse(value);
+          console.log('spouse selected')
+              
           // setSelectedMembers([...selectedMembers, value]);
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value,age:'',gender:'male'}])
         } else {
