@@ -14,11 +14,11 @@ const MultiStepForm = () => {
   const [you, setYou] = useState('');
   const [mother, setMother] = useState('');
   const [father, setFather] = useState('');
-  const [son, setSon] = useState(''); 
+  const [son4, setSon4] = useState(''); 
   const [son1,setSon1]=useState('')
   const [son2,setSon2]=useState('')
   const [son3,setSon3]=useState('')
-  const [daughter, setDaughter] = useState('');
+  const [daughter4, setDaughter4] = useState('');
   const [daughter1,setDaughter1]=useState('')
   const [daughter2,setDaughter2]=useState('')
   const [daughter3,setDaughter3]=useState('')
@@ -26,8 +26,8 @@ const MultiStepForm = () => {
   // const [selectedOptions, setSelectedOptions] = useState([]);
 const [motherAge,setMotherAge] = useState('');
   const [fatherAge,setFatherAge] = useState('');
-  const [sonAge,setSonAge] = useState('');
-  const [daughterAge,setDaughterAge] = useState('');
+  const [son4Age,setSon4Age] = useState('');
+  const [daughter4Age,setDaughter4Age] = useState('');
   const [spouseAge,setSpouseAge] = useState('');
   const [youAge,setYouage] = useState('');
   const [son1Age,setSon1Age] = useState('');
@@ -37,8 +37,8 @@ const [motherAge,setMotherAge] = useState('');
   const [daughter2Age,setDaughter2Age]=useState('')
   const [daughter3Age,setDaughter3Age]=useState('')
   // const [age, setAge] = useState('');
-  const [sonCount,setSonCount]=useState(1)
-  const [daughterCount, setDaughterCount]=useState(1)
+  const [sonCount,setSonCount]=useState(0)
+  const [daughterCount, setDaughterCount]=useState(0)
   const [selectedMembers,setSelectedMembers]=useState([{relation:'',age:'',gender:''}]);
 
   useEffect(() => {
@@ -46,27 +46,29 @@ const [motherAge,setMotherAge] = useState('');
     const storedYou = localStorage.getItem('you');
     const storedMother = localStorage.getItem('mother');
     const storedFather = localStorage.getItem('father');
-    const storedSon = localStorage.getItem('son');
+    const storedSon4 = localStorage.getItem('son4');
     const storedSon1 = localStorage.getItem('son1');
     const storedSon2 = localStorage.getItem('son2');
     const storedSon3 = localStorage.getItem('son3');
-    const storedDaughter = localStorage.getItem('daughter');
     const storedDaughter1 = localStorage.getItem('daughter1');
     const storedDaughter2 = localStorage.getItem('daughter2');
     const storedDaughter3 = localStorage.getItem('daughter3');
+    const storedDaughter4 = localStorage.getItem('daughter4');
     const storedSpouse = localStorage.getItem('spouse');
     const storedMotherAge = localStorage.getItem('motherAge');
     const storedFatherAge = localStorage.getItem('fatherAge');
-    const storedSonAge = localStorage.getItem('sonAge');
-    const storedDaughterAge = localStorage.getItem('daughterAge');
+    const storedSon1Age = localStorage.getItem('son1Age');
+    const storedDaughter1Age = localStorage.getItem('daughter1Age');
     const storedSpouseAge = localStorage.getItem('spouseAge');
     const storedYouAge = localStorage.getItem('youAge');
-    const storedSon1Age = localStorage.getItem('son1Age');
     const storedSon2Age = localStorage.getItem('son2Age');
     const storedSon3Age = localStorage.getItem('son3Age');
-    const storedDaughter1Age = localStorage.getItem('daughter1Age');
-    const storedDaughter2Age = localStorage.getItem('daughter2Age');  
-    const storedDaughter3Age = localStorage.getItem('daughter3Age');
+    const storedSon4Age = localStorage.getItem('son4Age');
+    const storedDaughter2Age = localStorage.getItem('daughter2Age');
+    const storedDaughter3Age = localStorage.getItem('daughter3Age');  
+    const storedDaughter4Age = localStorage.getItem('daughter4Age');
+    // const storedDaughterCount=localStorage.getItem('daughterCount');
+    // const storedSonCount=localStorage.getItem('sonCount');
     // const storedOptions = localStorage.getItem('selectedOptions');
     if (storedGender) {
       setGender(storedGender);
@@ -83,12 +85,12 @@ const [motherAge,setMotherAge] = useState('');
       setFather(storedFather);
       setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedFather,age:'',gender:'male'}])
     }
-    if (storedSon) {
-      setSon(storedSon);
-      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedSon,age:'',gender:'male'}])
+    if (storedSon1) {
+      setSon1(storedSon1);
+      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedSon1,age:'',gender:'male'}])
     }
-     if (storedSon1) {
-      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon1,age:'',gender:'male'}])
+     if (storedSon4) {
+      setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon4,age:'',gender:'male'}])
      }
      if (storedSon2) {
       setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon2,age:'',gender:'male'}])
@@ -96,11 +98,11 @@ const [motherAge,setMotherAge] = useState('');
      if (storedSon3) {
       setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedSon3,age:'',gender:'male'}])
      }
-    if (storedDaughter) {
-      setDaughter(storedDaughter);
-      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedDaughter,age:'',gender:'female'}])
+    if (storedDaughter4) {
+      setSelectedMembers((prevMembers)=>[...prevMembers, {relation:storedDaughter4,age:'',gender:'female'}])
     }
     if (storedDaughter1) {
+      setDaughter1(storedDaughter1);
       setSelectedMembers((prevMembers)=>[...prevMembers,{relation:storedDaughter1,age:'',gender:'female'}])
     }
     if (storedDaughter2) {
@@ -122,11 +124,11 @@ const [motherAge,setMotherAge] = useState('');
    if (storedSpouseAge) {
     setSpouseAge(storedSpouseAge);
    }
-   if (storedSonAge) {
-    setSonAge(storedSonAge);
+   if (storedSon4Age) {
+    setSon4Age(storedSon4Age);
    }
-   if (storedDaughterAge) {
-    setDaughterAge(storedDaughterAge);
+   if (storedDaughter4Age) {
+    setDaughter4Age(storedDaughter4Age);
    }
    if (storedYouAge) {
     setYouage(storedYouAge);
@@ -149,12 +151,12 @@ const [motherAge,setMotherAge] = useState('');
    if (storedDaughter3Age) {
     setDaughter3Age(storedDaughter3Age);
    }
-
-
-
-
-
-
+  //   if (storedDaughterCount) {
+  //     setDaughterCount(storedDaughterCount);
+  //  }
+  //  if (storedSonCount) {
+  //   setSonCount(storedSonCount);
+  //  }
     // if (storedOptions) {
     //   setSelectedOptions(JSON.parse(storedOptions));
     // }
@@ -165,19 +167,19 @@ const [motherAge,setMotherAge] = useState('');
     localStorage.setItem('you', you);
     localStorage.setItem('mother', mother);
     localStorage.setItem('father', father);
-    localStorage.setItem('son', son);
+    localStorage.setItem('son4', son4);
     localStorage.setItem('son1', son1);
     localStorage.setItem('son2', son2);
     localStorage.setItem('son3', son3);
-    localStorage.setItem('daughter', daughter);
+    localStorage.setItem('daughter4', daughter4);
     localStorage.setItem('daughter1', daughter1);
     localStorage.setItem('daughter2', daughter2);
     localStorage.setItem('daughter3', daughter3);
     localStorage.setItem('spouse', spouse);
     localStorage.setItem('motherAge', motherAge);
     localStorage.setItem('fatherAge', fatherAge);
-    localStorage.setItem('sonAge', sonAge);
-    localStorage.setItem('daughterAge', daughterAge);
+    localStorage.setItem('son4Age', son4Age);
+    localStorage.setItem('daughter4Age', daughter4Age);
     localStorage.setItem('spouseAge', spouseAge);
     localStorage.setItem('youAge', youAge);
     localStorage.setItem('son1Age', son1Age);
@@ -186,26 +188,17 @@ const [motherAge,setMotherAge] = useState('');
     localStorage.setItem('daughter1Age', daughter1Age);
     localStorage.setItem('daughter2Age', daughter2Age);
     localStorage.setItem('daughter3Age', daughter3Age);
+    // localStorage.setItem('sonCount', sonCount);
+    // localStorage.setItem('daughterCount',daughterCount);
     // localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
-  }, [gender,you,mother,father,son,son1,son2,son3,daughter,daughter1,daughter2,daughter3,spouse,motherAge,fatherAge,sonAge,daughterAge,spouseAge,youAge,son1Age,son2Age,son3Age,daughter1Age,daughter2Age,daughter3Age /* ,selectedOptions*/]);
+  }, [gender,you,mother,father,son4,son1,son2,son3,daughter4,daughter1,daughter2,daughter3,spouse,motherAge,fatherAge,son4Age,daughter4Age,spouseAge,youAge,son1Age,son2Age,son3Age,daughter1Age,daughter2Age,daughter3Age /*,sonCount,daughterCount  ,selectedOptions*/]);
 
   const handleGenderChange = (event) => {
     const selectedGender = event.target.value;
     setGender(selectedGender);
     // setSelectedOptions([]);
   };
-
-  // const handleCheckboxChange = (event) => {
-  //   const value = event.target.value;
-  //   const checked = event.target.checked;
-
-  //   if (checked) {
-  //     setSelectedOptions([...selectedOptions, value]);
-  //   } else {
-  //     setSelectedOptions(selectedOptions.filter((option) => option !== value));
-  //   }
-  // };
-  const youCheckBoxChange =(event) => {
+   const youCheckBoxChange =(event) => {
     const value = event.target.value;
     const checked = event.target.checked;
     if (checked) {
@@ -224,7 +217,6 @@ const [motherAge,setMotherAge] = useState('');
     const checked = event.target.checked;
     if (checked) {
           setMother(value);
-          // setSelectedMembers([...selectedMembers, value]);
           console.log('mother selected')
           console.log(value)
           setSelectedMembers((prevMembers)=>[...prevMembers, {relation:value, age:'',gender:'female'}]);
@@ -252,31 +244,33 @@ const [motherAge,setMotherAge] = useState('');
     const value = event.target.value;
     const checked = event.target.checked;
     if (checked) {
-          setSon(value);
-          setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son', age: '', gender: 'male' }]);
-          console.log('son')
+          setSon1(value);
+          setSonCount(1)
+          setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son1', age: '', gender: 'male' }]);
+          console.log('son1')
 
         } else {
-          setSon('');
+          setSon1('');
           setSelectedMembers((prevMembers) =>
-          prevMembers.filter((member) => member.relation!== value)
+          prevMembers.filter((member) => !member.relation.startsWith('son'))
         );
-          setSonCount(1)
+          setSonCount(0)
         }
   }
   const daughterCheckBoxChange =(event) => {
     const value = event.target.value;
     const checked = event.target.checked;
     if (checked) {
-          setDaughter(value);
-          setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter', age: '', gender: 'female' }]);
-          console.log('daughter')
+          setDaughter1(value);
+          setDaughterCount(1)
+          setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter1', age: '', gender: 'female' }]);
+          console.log('daughter1')
         } else {
-          setDaughter('');
+          setDaughter1('');
           setSelectedMembers((prevMembers) =>
-          prevMembers.filter((member) => member.relation!== value)
+          prevMembers.filter((member) => !member.relation.startsWith('daughter'))
         );
-        setDaughterCount(1)
+        setDaughterCount(0)
         }
   }
   const spouseCheckBoxChange =(event) => {
@@ -294,84 +288,51 @@ const [motherAge,setMotherAge] = useState('');
  
   // const sonCountDecrease = () => { sonCount>0&& setSonCount(preCount=>preCount-1)};
   const sonCountDecrease = () => {
-    if (sonCount > 0) {
-      setSonCount((preCount) => preCount - 1);
-      // setSelectedMembers(selectedMembers.filter((option) => option !== son));
-      // setSelectedMembers((prevMembers) => {
-      //   const index = prevMembers.findIndex((member) => member.relation === 'son');
-      //   if (index !== -1) {
-      //     const updatedMembers = [...prevMembers];
-      //     updatedMembers.splice(index, 1);
-      //     return updatedMembers;
-      //   }
-      //   return prevMembers;
-      // });
+    if (sonCount > 1) {
+      const updatedSonCount = sonCount - 1; // Store the updated sonCount in a separate variable
+  
+      setSonCount(updatedSonCount);
+  
       setSelectedMembers((prevMembers) => {
-        // Create a new array excluding the last item
-        const updatedMembers = prevMembers.slice(0, -1);
-        return updatedMembers;
+        const relationsToRemove = [`son${sonCount}`];
+        return prevMembers.filter((member) => !relationsToRemove.includes(member.relation));
       });
-      
-      
     }
   };
-  
   const sonCountIncrease = () => {
-    if ((sonCount + daughterCount) < 4) {
-      setSonCount((preCount) => preCount + 1);
-      // setSelectedMembers([...selectedMembers, son]);
+    if (sonCount + daughterCount < 4) {
+      const newSonCount = sonCount + 1;
+      setSonCount(newSonCount);
+  
       console.log('sonCount increase');
-      switch (sonCount) {
-         case 1: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'son1', age: '', gender: 'male' }]);
-         break;
-         case 2: setSelectedMembers((prevMembers) => [...prevMembers, { relation:'son2', age: '', gender: 'male' }]);
-         break;
-         case 3: setSelectedMembers((prevMembers) => [...prevMembers, { relation:'son3', age: '', gender: 'male' }]);
-         break;
-      }
+  
+      setSelectedMembers(prevMembers => [...prevMembers, { relation: `son${newSonCount}`, age: '', gender: 'male' }]);
     }
   };
-  
   // const daughterCountDecrease = () => {daughterCount>0&& setDaughterCount(preCount=>preCount-1)};
   const daughterCountDecrease = () => {
-    if (daughterCount > 0) {
-      setDaughterCount((preCount) => preCount - 1);
-      // setSelectedMembers(selectedMembers.filter((option) => option !== daughter));
-      // setSelectedMembers((prevMembers) => {
-      //   const index = prevMembers.findIndex((member) => member.relation === 'daughter');
-      //   if (index !== -1) {
-      //     const updatedMembers = [...prevMembers];
-      //     updatedMembers.splice(index, 1);
-      //     return updatedMembers;
-      //   }
-      //   return prevMembers;
+    if (daughterCount > 1) {
+      const updatedDaughterCount = daughterCount - 1; // Store the updated sonCount in a separate variable
+  
+      setDaughterCount(updatedDaughterCount);
+  
       setSelectedMembers((prevMembers) => {
-        // Create a new array excluding the last item
-        const updatedMembers = prevMembers.slice(0, -1);
-        return updatedMembers;
+        const relationsToRemove = [`daughter${daughterCount}`];
+        return prevMembers.filter((member) => !relationsToRemove.includes(member.relation));
       });
-      
-      // });
-      switch(daughterCount) {
-        case 2: selectedMembers.filter((option) => option.relation !=='son1')
-      }
-      
     }
   };
   const daughterCountIncrease = () => {
-    if ((sonCount + daughterCount) < 4) {
-      setDaughterCount((preCount) => preCount + 1);
-      // setSelectedMembers([...selectedMembers, daughter]);
-     switch(daughterCount) {
-      case 1: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter1', age: '', gender: 'female' }]);
-      break;
-      case 2: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter2', age: '', gender: 'female' }]);
-      break;
-      case 3: setSelectedMembers((prevMembers) => [...prevMembers, { relation: 'daughter3', age: '', gender: 'female' }]);
-      break;
-     }
+    if (sonCount + daughterCount < 5) {
+      const newDaughterCount = daughterCount + 1;
+      setDaughterCount(newDaughterCount);
+  
+      console.log('daughterCount increase');
+  
+      setSelectedMembers(prevMembers => [...prevMembers, { relation: `daughter${newDaughterCount}`, age: '', gender: 'male' }]);
     }
   };
+  
   //orkkanam may be mattendivarum
   // const handleAgeChange = (event) => {
   //   setAge(event.target.value);
@@ -518,8 +479,8 @@ const [motherAge,setMotherAge] = useState('');
           <input
             type="checkbox"
             id="youCheckbox2"
-            value="son"
-            checked={son==='son'}
+            value="son1"
+            checked={son1==='son1'}
             // disabled={childSelection}
             onChange={sonCheckBoxChange}
             className="checkbox-input"
@@ -529,7 +490,7 @@ const [motherAge,setMotherAge] = useState('');
             Son
           </label>
           <div className='special'>
-          {son && <div className='d-flex align-items-center justify-content-center'>
+          {son1 && <div className='d-flex align-items-center justify-content-center'>
             <div className='btn' onClick={sonCountDecrease}>-</div>
             <div>{sonCount}</div>
             <div className='btn' onClick={sonCountIncrease}>+</div></div>}
@@ -541,8 +502,8 @@ const [motherAge,setMotherAge] = useState('');
           <input
             type="checkbox"
             id="youCheckbox3"
-            value="daughter"
-            checked={daughter==='daughter'}
+            value="daughter1"
+            checked={daughter1==='daughter1'}
             onChange={daughterCheckBoxChange}
             className="checkbox-input"
           />
@@ -551,7 +512,7 @@ const [motherAge,setMotherAge] = useState('');
             Daughter
           </label>
           <div className='special'>
-          {daughter && <div className='d-flex align-items-center justify-content-center'>
+          {daughter1 && <div className='d-flex align-items-center justify-content-center'>
             <div className='btn' onClick={daughterCountDecrease}>-</div>
             <div>{daughterCount}</div>
             <div className='btn' onClick={daughterCountIncrease} >+</div></div>}
